@@ -1,5 +1,6 @@
 package com.zahidiyigokler.a13_kent;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,8 @@ public class LandmarkAdapter extends RecyclerView.Adapter<LandmarkAdapter.Landma
         RecyclerRowBinding recyclerRowBinding=RecyclerRowBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
         return new LandmarkHolder(recyclerRowBinding);
     }
-
     @Override
-    public void onBindViewHolder(LandmarkAdapter.LandmarkHolder holder,int position){
+    public void onBindViewHolder(LandmarkAdapter.LandmarkHolder holder, @SuppressLint("RecyclerView") int position){
         holder.binding.recyclerViewTextView.setText(landmarkList.get(position).name);
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -30,17 +30,14 @@ public class LandmarkAdapter extends RecyclerView.Adapter<LandmarkAdapter.Landma
                 Intent intent =new Intent(holder.itemView.getContext(), DetailsActivity.class);
                 Singleton singleton = Singleton.getInstance();
                 singleton.setChosenLandmark(landmarkList.get(position));
-                // intent.putExtra("landmark",landmarkList.get(position));
                 holder.itemView.getContext().startActivity(intent);
             }
         });
     }
-
     @Override
     public int getItemCount(){
         return landmarkList.size();
     }
-
     public class LandmarkHolder extends RecyclerView.ViewHolder{
         private RecyclerRowBinding binding;
         public LandmarkHolder(RecyclerRowBinding binding){

@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/landmarkNameText"
+        android:id="@+id/countryNameText"
         android:layout_width="250dp"
         android:layout_height="62dp"
         android:layout_marginBottom="350dp"
